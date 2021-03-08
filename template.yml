@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  function:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: target/aws-lambda-event-handler-java-demo-1.0-SNAPSHOT.jar
+      Handler: takechiyo.aws.java.lambda.EventHandler::handleRequest
+      Runtime: java11
+      Description: Lambda function handler (Java)
+      MemorySize: 512
+      Timeout: 10
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambdaReadOnlyAccess
+      Tracing: Active
